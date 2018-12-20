@@ -3,8 +3,6 @@ package com.example.natasha_travnicek.awappenandroid
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_aw_places.*
 
 
 class awPlacesActivity : AppCompatActivity() {
@@ -23,9 +21,9 @@ class awPlacesActivity : AppCompatActivity() {
 
 
 
-        awPlacesRecView.layoutManager = LinearLayoutManager(this)
+      //  awPlacesRecView.layoutManager = LinearLayoutManager(this)
 
-        awPlacesRecView.adapter = awPlacesAdapter()
+       // awPlacesRecView.adapter = awPlacesAdapter()
 
     }
 

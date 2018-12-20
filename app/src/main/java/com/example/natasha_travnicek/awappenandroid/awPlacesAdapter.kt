@@ -1,31 +1,83 @@
 package com.example.natasha_travnicek.awappenandroid
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import kotlinx.android.synthetic.main.aw_places_layout.view.*
 
-class awPlacesAdapter : RecyclerView.Adapter<awPlacesAdapter.awPlacesViewHolder>(){
+class awPlacesAdapter(var place : List<SearchFragment.Place> , val clickplaceListener: (Int) -> Unit) : RecyclerView.Adapter<awPlacesAdapter.awPlacesViewHolder>(){
+
+//    , val clickpersonListener: (Int) -> Unit) :
+
+    fun letsUpdateStuff(thenewPlace : List<SearchFragment.Place>)
+    {
+        place = thenewPlace
+        notifyDataSetChanged()
+    }
 
     //Viewholder = row (UITableviewCell)
     //create a row
     override fun onCreateViewHolder(parent: ViewGroup, rownumber: Int): awPlacesAdapter.awPlacesViewHolder {
-        return awPlacesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.aw_places_layout, parent, false))
+        var theHolder = awPlacesViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.aw_places_layout, parent, false))
+        theHolder.theAdapter = this
+        return theHolder
+
+
     }
 
     override fun getItemCount(): Int {
-        return 6
+        return place.size
     }
 
     //Add content to row
     override fun onBindViewHolder(holder: awPlacesAdapter.awPlacesViewHolder, rownumber: Int) {
-        holder.awPlaceTextView1.text = "Hello" + rownumber.toString()
+
+        //holder.awplaceTextView.text = place.get(rownumber).toString()
+        holder.awPlaceTextView1.text = place.get(rownumber).name
+
+        // holder.awPlaceTextView1.text = "Hello" + rownumber.toSt ring()
+     //   holder.awPlaceTextView1.text = place.get(rownumber).name
+
+     //   holder.personname.text = people.get(rownumber)
+        holder.firstname.text = place.get(rownumber).fbKey
+
 
     }
 
     class awPlacesViewHolder (view: View) : RecyclerView.ViewHolder(view){
-    val awPlaceTextView1 = view.awplaceTextView
+
+        lateinit var theAdapter : awPlacesAdapter
+
+        val firstname = view.awplaceTW
+
+
+        init {
+      view.setOnClickListener(){
+
+
+       //   Toast.makeText(view.context, "Rad: " + awPlaceTextView1, Toast.LENGTH_SHORT).show()
+          Toast.makeText(view.context, "KLICK PÅ RAD " + theAdapter.place.get(adapterPosition), Toast.LENGTH_SHORT).show()
+
+
+          val intent = Intent(view.context, detailViewController::class.java)
+
+
+         // intent.putExtra("awPlaceTextView1", theAdapter.place.get(adapterPosition))
+          //goDetailIntent.putExtra("person", theadapter.people.get(adapterPosition))
+
+
+          Log.i("pia8", "${awPlaceTextView1.text}")
+
+           view.context.startActivity(intent)
+
+      }
+
+        }
+    val awPlaceTextView1 = view.awplaceTW
 
 
 
