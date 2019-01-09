@@ -8,7 +8,10 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 
-class mainActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionListener, SearchFragment.OnFragmentInteractionListener, FavoriteFragment.OnFragmentInteractionListener{
+
+
+
+class mainActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionListener, SearchFragment.OnFragmentInteractionListener {
 
 
 
@@ -35,7 +38,7 @@ class mainActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
         }
         R.id.Favorite_Container -> {
 
-            replaceFragmentFavorite(FavoriteFragment())
+            replaceFragmentFavorite(FavoritesFragment())
 
             return@OnNavigationItemSelectedListener true
         }
@@ -91,12 +94,16 @@ bottom_navigation.setOnNavigationItemSelectedListener(m0nNavigationItemSelectedL
 
     private fun replaceFragmentFavorite(fragment : Fragment){
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_Container, FavoriteFragment())
+        transaction.replace(R.id.fragment_Container, FavoritesFragment())
         transaction.commit()
     }
 
     override fun onFragmentInteraction(uri: Uri) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+
+
+
     }
 
 }
