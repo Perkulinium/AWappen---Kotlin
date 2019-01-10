@@ -23,6 +23,8 @@
                 android:label="Search"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
+        <activity android:name=".detailViewController">
+        </activity>
         <activity
                 android:name=".favoritesActivity"
                 android:label="@string/title_activity_favorites"

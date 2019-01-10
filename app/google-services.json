@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "826303619123-ohbg7ml8a2gdn1utuj81va1n98tr9j4n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.natasha_travnicek.awappenandroid",
+            "certificate_hash": "e8fbb73b62342799fee94e770a23b0e04b0dfd28"
+          }
+        },
+        {
           "client_id": "826303619123-at8brs3rq91g4u5bd3b3ila0k8tvr0hk.apps.googleusercontent.com",
           "client_type": 3
         }

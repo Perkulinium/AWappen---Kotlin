@@ -5,9 +5,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_search.*
 
 
@@ -26,10 +31,18 @@ private const val ARG_PARAM2 = "param2"
  *
  */
 class SearchFragment : Fragment() {
+
+
+    val TAG = "awAppen"
+    var place = mutableListOf<Place>()
+
+    lateinit var theAdapter: awPlacesAdapter
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-    private var listener: OnFragmentInteractionListener? = null
+    private var listener: SearchFragment.OnFragmentInteractionListener? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,19 +55,18 @@ class SearchFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
-
-
-     //   awPlacesRecView.layoutManager = LinearLayoutManager(this)
-
-       // awPlacesRecView.adapter = awPlacesAdapter()
-
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+
+
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_search, container, false)
 
@@ -116,9 +128,113 @@ class SearchFragment : Fragment() {
             }
     }
 
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
+
+
+
+
+       // place.add(Place("3_test", "Hej", "aw"))
+
+
+//        place.add(Place("dsda", "Då"))
+
+
+
+
         recView.layoutManager = LinearLayoutManager(context)
-        recView.adapter = awPlacesAdapter()
+        theAdapter = awPlacesAdapter(place) {
+            rownumberClicked ->
+            Log.i(TAG, "Vi klickade på raden $rownumberClicked")
+            loadPlaces()
+        }
+        recView.adapter = theAdapter
+        loadPlaces()
+
+
+
+
     }
+
+
+    fun loadPlaces() {
+
+
+        val database = FirebaseDatabase.getInstance()
+        val placeRef = database.reference
+
+
+        val getPlaceListener = object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+
+
+              for (currentPlace in dataSnapshot.children) {
+                    val thePlace = currentPlace.getValue(Place::class.java)
+
+
+
+
+                 thePlace?.fbKey = currentPlace.key
+
+
+                    Log.i(TAG, "Loop person ${thePlace!!.fbKey}")
+                    place.add(thePlace)
+
+              }
+                theAdapter.letsUpdateStuff(place)
+
+            }
+
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+                Log.w(TAG, "Loadpost: onCancelled", databaseError.toException())
+
+
+            }
+
+        }
+
+       // placeRef.addListenerForSingleValueEvent(getPlaceListener)
+          placeRef.addListenerForSingleValueEvent(getPlaceListener)
+    }
+
+
+    fun savePerson(view : View)
+    {
+
+        val database = FirebaseDatabase.getInstance()
+
+        val placeRef = database.getReference("3_test")
+
+        val PlaceToSave = Place()
+
+        //PlaceToSave.name = awplaceTextView.text.toString()
+
+        placeRef.push().setValue(PlaceToSave)
+       // PlaceToSave.saveMe()
+        loadPlaces()
+
+
+    }
+
+    data class Place(
+        var fbKey : String? = null,
+
+        var name : String? = "",
+        // var age : Int? = null
+
+    var jobb : String? = ""
+
+
+    )
 }
+
+
+
+
+
