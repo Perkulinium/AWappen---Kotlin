@@ -75,4 +75,10 @@
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="92dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent" android:onClick="toMapTemp"/>
+    <TextView
+            android:text="I think my map activity has to replace this activity. To see map, click on temp button./Natasha"
+            android:layout_width="166dp"
+            android:layout_height="68dp"
+            android:id="@+id/textView6" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textTextView"/>
 </android.support.constraint.ConstraintLayout>
