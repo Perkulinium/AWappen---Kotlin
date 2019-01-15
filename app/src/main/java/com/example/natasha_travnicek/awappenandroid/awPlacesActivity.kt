@@ -27,10 +27,10 @@ class awPlacesActivity : AppCompatActivity() {
 
     }
 
-    fun goToOther(){
+    /*fun goToOther(){
         val goTobla = Intent(this, mainActivity::class.java)
         startActivity(goTobla)
-    }
+    }*/
 
 
 }

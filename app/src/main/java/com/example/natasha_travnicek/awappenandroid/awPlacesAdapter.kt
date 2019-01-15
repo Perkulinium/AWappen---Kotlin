@@ -9,11 +9,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import kotlinx.android.synthetic.main.aw_places_layout.view.*
 
-class awPlacesAdapter(var place : List<SearchFragment.Place> , val clickplaceListener: (Int) -> Unit) : RecyclerView.Adapter<awPlacesAdapter.awPlacesViewHolder>(){
+class awPlacesAdapter(var place: MutableList<firebase>, val clickplaceListener: (Int) -> Unit) : RecyclerView.Adapter<awPlacesAdapter.awPlacesViewHolder>(){
 
 //    , val clickpersonListener: (Int) -> Unit) :
 
-    fun letsUpdateStuff(thenewPlace : List<SearchFragment.Place>)
+    fun letsUpdateStuff(thenewPlace: MutableList<firebase>)
     {
         place = thenewPlace
         notifyDataSetChanged()
@@ -63,8 +63,10 @@ class awPlacesAdapter(var place : List<SearchFragment.Place> , val clickplaceLis
           Toast.makeText(view.context, "KLICK PÅ RAD " + theAdapter.place.get(adapterPosition), Toast.LENGTH_SHORT).show()
 
 
-          val intent = Intent(view.context, detailViewController::class.java)
+          val intent = Intent(view.context, MapAndDetailsMapsActivity::class.java)
 
+            Log.i("pia8", "${theAdapter.place.get(adapterPosition)}")
+          Log.i("pia8", "${theAdapter.place.get(adapterPosition).longitude}")
 
          // intent.putExtra("awPlaceTextView1", theAdapter.place.get(adapterPosition))
           //goDetailIntent.putExtra("person", theadapter.people.get(adapterPosition))

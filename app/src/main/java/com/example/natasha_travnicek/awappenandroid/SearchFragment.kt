@@ -34,7 +34,7 @@ class SearchFragment : Fragment() {
 
 
     val TAG = "awAppen"
-    var place = mutableListOf<Place>()
+    var place = mutableListOf<firebase>()
 
     lateinit var theAdapter: awPlacesAdapter
 
@@ -165,16 +165,15 @@ class SearchFragment : Fragment() {
         val database = FirebaseDatabase.getInstance()
         val placeRef = database.reference
 
+        val test = placeRef.child("")
+        //val placeref2 = placeRef.child("Longitude")
 
         val getPlaceListener = object : ValueEventListener {
 
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-
-
               for (currentPlace in dataSnapshot.children) {
-                    val thePlace = currentPlace.getValue(Place::class.java)
-
+                    val thePlace = currentPlace.getValue(firebase::class.java)
 
 
 
@@ -182,12 +181,19 @@ class SearchFragment : Fragment() {
 
 
                     Log.i(TAG, "Loop person ${thePlace!!.fbKey}")
-                    place.add(thePlace)
+                  Log.i(TAG, "Loop person ${thePlace!!.longitude}")
+
+                  //Log.i("pia8", "${thePlace.latitude}")
+                  //Log.i("pia8", "${thePlace.longitude}")
+
+                  place.add(thePlace)
 
               }
                 theAdapter.letsUpdateStuff(place)
 
             }
+
+
 
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -211,17 +217,17 @@ class SearchFragment : Fragment() {
 
         val placeRef = database.getReference("3_test")
 
-        val PlaceToSave = Place()
+       // val PlaceToSave = firebase()
 
         //PlaceToSave.name = awplaceTextView.text.toString()
 
-        placeRef.push().setValue(PlaceToSave)
+       // placeRef.push().setValue(PlaceToSave)
        // PlaceToSave.saveMe()
         loadPlaces()
 
 
     }
-
+/*
     data class Place(
         var fbKey : String? = null,
 
@@ -232,6 +238,8 @@ class SearchFragment : Fragment() {
 
 
     )
+*/
+
 }
 
 
