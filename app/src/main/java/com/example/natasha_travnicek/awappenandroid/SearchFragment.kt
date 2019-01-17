@@ -225,6 +225,8 @@ class SearchFragment : Fragment() {
 
 
 
+
+
                   Log.i(TAG, "test person - ${currentPlace!!.value}")
 
 

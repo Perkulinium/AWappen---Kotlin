@@ -32,6 +32,9 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
+
+
+
         awplaceAdress.text = awplace.Address
         awplaceOpeningHour.text = awplace.Openinghours
         awplaceWebsite.text = awplace.Webbsite

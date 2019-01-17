@@ -61,7 +61,7 @@ class awPlacesAdapter(var place: MutableList<firebase>, val clickplaceListener: 
 
 
        //   Toast.makeText(view.context, "Rad: " + awPlaceTextView1, Toast.LENGTH_SHORT).show()
-          Toast.makeText(view.context, "KLICK PÅ RAD " + theAdapter.place.get(adapterPosition), Toast.LENGTH_LONG).show()
+         // Toast.makeText(view.context, "KLICK PÅ RAD " + theAdapter.place.get(adapterPosition), Toast.LENGTH_LONG).show()
 
 
           val intent = Intent(view.context, MapAndDetailsMapsActivity::class.java)
