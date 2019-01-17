@@ -1,6 +1,8 @@
 package com.example.natasha_travnicek.awappenandroid
 
-data class firebase(var fbKey : String? = null,
+import java.io.Serializable
+
+data class firebase (var fbKey : String? = null,
                     var name : String? = "",
                     var longitude : Int? = null,
                     var latitude : Int? = null,
@@ -11,7 +13,7 @@ data class firebase(var fbKey : String? = null,
                     var activity : Boolean? = false,
                     var nightclub : Boolean? = false,
                     var event : Boolean? = false
-                    ) {
+                    ) : Serializable {
 
 
 }

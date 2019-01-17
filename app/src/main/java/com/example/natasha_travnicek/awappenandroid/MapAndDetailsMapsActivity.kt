@@ -2,6 +2,7 @@ package com.example.natasha_travnicek.awappenandroid
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -9,14 +10,34 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_map_and_details_maps.*
+import kotlin.math.log
 
 class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var mMap: GoogleMap
 
+    var awplace = firebase()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_and_details_maps)
+
+        awplace = intent.getSerializableExtra("awplace") as firebase
+
+
+        awplaceName.text = awplace.fbKey
+
+
+
+
+        awplaceAdress.text = awplace.address
+        awplaceOpeningHour.text = awplace.openinghours
+        awplaceWebsite.text = awplace.website
+
+     //   Log.i("pi8", "details : " + awplace.fbKey)
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment

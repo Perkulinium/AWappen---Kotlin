@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import kotlinx.android.synthetic.main.aw_places_layout.view.*
+import java.io.Serializable
 
 class awPlacesAdapter(var place: MutableList<firebase>, val clickplaceListener: (Int) -> Unit) : RecyclerView.Adapter<awPlacesAdapter.awPlacesViewHolder>(){
 
@@ -60,13 +61,20 @@ class awPlacesAdapter(var place: MutableList<firebase>, val clickplaceListener: 
 
 
        //   Toast.makeText(view.context, "Rad: " + awPlaceTextView1, Toast.LENGTH_SHORT).show()
-          Toast.makeText(view.context, "KLICK PÅ RAD " + theAdapter.place.get(adapterPosition), Toast.LENGTH_SHORT).show()
+          Toast.makeText(view.context, "KLICK PÅ RAD " + theAdapter.place.get(adapterPosition), Toast.LENGTH_LONG).show()
 
 
           val intent = Intent(view.context, MapAndDetailsMapsActivity::class.java)
 
-            Log.i("pia8", "${theAdapter.place.get(adapterPosition)}")
-          Log.i("pia8", "${theAdapter.place.get(adapterPosition).longitude}")
+       //     Log.i("pia8", "${theAdapter.place.get(adapterPosition)}")
+       //   Log.i("pia8", "${theAdapter.place.get(adapterPosition).longitude}")
+
+
+
+          intent.putExtra("awplace", theAdapter.place.get(adapterPosition))
+
+
+
 
          // intent.putExtra("awPlaceTextView1", theAdapter.place.get(adapterPosition))
           //goDetailIntent.putExtra("person", theadapter.people.get(adapterPosition))
