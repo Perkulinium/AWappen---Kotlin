@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.fragment_search.view.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -35,6 +37,8 @@ class SearchFragment : Fragment() {
 
     val TAG = "awAppen"
     var place = mutableListOf<firebase>()
+
+    var searchResult = mutableListOf<firebase>()
 
     lateinit var theAdapter: awPlacesAdapter
 
@@ -63,12 +67,41 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        val theLayout = inflater.inflate(R.layout.fragment_search, container, false)
+
+        theLayout.searchBox.setOnQueryTextListener(object : android.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                Log.i("pi8", newText)
+
+                searchResult.clear()
+
+
+                for(places in place) {
+
+
+                    if(places.fbKey!!.contains(newText!!, ignoreCase = true)) {
+                        searchResult.add(places)
+                    }
+
+                    theAdapter.letsUpdateStuff(searchResult)
+
+                }
+
+
+                return false
+            }
+
+        })
 
 
 
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        return theLayout
 
 
     }
