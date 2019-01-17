@@ -32,9 +32,9 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-        awplaceAdress.text = awplace.address
-        awplaceOpeningHour.text = awplace.openinghours
-        awplaceWebsite.text = awplace.website
+        awplaceAdress.text = awplace.Address
+        awplaceOpeningHour.text = awplace.Openinghours
+        awplaceWebsite.text = awplace.Webbsite
 
      //   Log.i("pi8", "details : " + awplace.fbKey)
 

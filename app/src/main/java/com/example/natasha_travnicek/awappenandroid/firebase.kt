@@ -4,15 +4,15 @@ import java.io.Serializable
 
 data class firebase (var fbKey : String? = null,
                     var name : String? = "",
-                    var longitude : Int? = null,
-                    var latitude : Int? = null,
-                    var openinghours : String? = "",
-                    var address : String? = "",
-                    var website : String? = "",
-                    var restaurant : Boolean? = false,
-                    var activity : Boolean? = false,
-                    var nightclub : Boolean? = false,
-                    var event : Boolean? = false
+                    var Longitude : Int? = null,
+                    var Latitude : Int? = null,
+                    var Openinghours : String? = "",
+                    var Address : String? = "",
+                    var Webbsite : String? = "",
+                    var Restaurant : Boolean? = false,
+                    var Activity : Boolean? = false,
+                    var Nightclub : Boolean? = false,
+                    var Event : Boolean? = false
                     ) : Serializable {
 
 

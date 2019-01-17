@@ -210,11 +210,26 @@ class SearchFragment : Fragment() {
 
 
 
+
+
+
+
+
+
                  thePlace?.fbKey = currentPlace.key
 
 
+
+                thePlace?.Openinghours = currentPlace.child("Opening hours").value.toString()
+
+
+
+
+                  Log.i(TAG, "test person - ${currentPlace!!.value}")
+
+
                     Log.i(TAG, "Loop person ${thePlace!!.fbKey}")
-                  Log.i(TAG, "Loop person ${thePlace!!.longitude}")
+                  Log.i(TAG, "Loop person ${thePlace!!.Longitude}")
 
                   //Log.i("pia8", "${thePlace.latitude}")
                   //Log.i("pia8", "${thePlace.longitude}")
