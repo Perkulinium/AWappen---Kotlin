@@ -19,6 +19,7 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     var awplace = firebase()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_and_details_maps)
@@ -57,7 +58,9 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-       /* // Add a marker and move the camera
+       /* // if place not found:
+       var latitudeA = awplace.Latitude
+       var longitudeB = awplace.Longitude
         if (latitudeA == null || longitudeB == null){
             var showplace = LatLng(55.60587, 13.00073)
             mMap.addMarker(MarkerOptions().position(showplace).title("Place not found. Marker in Malmö."))
