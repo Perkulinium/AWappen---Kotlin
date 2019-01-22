@@ -4,8 +4,8 @@ import java.io.Serializable
 
 data class firebase (var fbKey : String? = null,
                     var name : String? = "",
-                    var Longitude : Int? = null,
-                    var Latitude : Int? = null,
+                    var Longitude : Double? = null,
+                    var Latitude : Double? = null,
                     var Openinghours : String? = "",
                     var Address : String? = "",
                     var Webbsite : String? = "",
