@@ -1,12 +1,19 @@
 package com.example.natasha_travnicek.awappenandroid
 
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.fragment_home.*
+
+//import android.widget.Button;
 
 
 
@@ -29,6 +36,9 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
+
+    var weekly_place : firebase? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,6 +74,59 @@ class HomeFragment : Fragment() {
         super.onDetach()
         listener = null
     }
+
+
+    override fun onStart() {
+        super.onStart()
+
+        home_weekly_button.setOnClickListener {
+
+            if(weekly_place != null)
+            {
+                val intent = Intent(this.context, MapAndDetailsMapsActivity::class.java)
+
+                intent.putExtra("", weekly_place)  //vilket är veckans aw här
+
+
+                startActivity(intent)
+            }
+
+        }
+
+/*
+        // firebase hämta veckans aw place..
+
+        val database = FirebaseDatabase.getInstance()
+        val placeRef = database.reference
+
+        val test = placeRef.child("")          //hämta var stället ligger, kolla xcode
+        //val placeref2 = placeRef.child("Longitude")
+
+
+                       /*
+                func addWeeklyAW() {
+
+                    for aw in awPlaceList {
+                        if(aw.weekly == true) {
+                            weekly = aw
+                            weeklyAWName.text = weekly.name
+                            weeklyAWCategories.text = weekly.getCategoriesAsString()
+                        }
+                        */
+
+        val getPlaceListener = object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                for (currentPlace in dataSnapshot.children) {
+                    val thePlace = currentPlace.getValue(firebase::class.java)
+                }
+            }
+        }
+
+        home_weekly_button.text = "abc"                 //vad heter veckans ställe
+    }
+*/
 
     /**
      * This interface must be implemented by activities that contain this

@@ -33,8 +33,10 @@ class mainActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
               return@OnNavigationItemSelectedListener true
 
         }
-        R.id.Favorite_Container -> {
+        R.id.Favorites_Container -> {
+            Log.d("TAG", "sök")
 
+            replaceFragmentFavorites(FavoritesFragment())
           //  replaceFragmentFavorite(FavoriteFragment())
 
             return@OnNavigationItemSelectedListener true
@@ -89,8 +91,10 @@ bottom_navigation.setOnNavigationItemSelectedListener(m0nNavigationItemSelectedL
         transaction.commit()
     }
 
-    private fun replaceFragmentFavorite(fragment : Fragment){
+    private fun replaceFragmentFavorites(fragment : Fragment){
+
         val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.fragment_Container, FavoritesFragment())
         //transaction.replace(R.id.fragment_Container, FavoriteFragment())
         transaction.commit()
     }

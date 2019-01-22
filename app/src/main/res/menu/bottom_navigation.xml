@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_search_black_24dp"
         android:title="Search" />
     <item
-        android:id="@+id/Favorite_Container"
+        android:id="@+id/Favorites_Container"
         android:icon="@drawable/ic_favorite_black_24dp"
         android:title="Favorites" />
 
