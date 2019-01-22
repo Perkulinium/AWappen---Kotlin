@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.natasha_travnicek.awappenandroid">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -16,22 +15,26 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
+        <activity android:name=".SplashActivity"
+                  android:theme="@style/Theme.Transparent">
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
                 android:name=".mainActivity"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity
                 android:name=".awPlacesActivity"
                 android:label="Search"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
-        <activity android:name=".detailViewController">
-        </activity>
+
         <activity
                 android:name=".favoritesActivity"
                 android:label="@string/title_activity_favorites"
@@ -54,7 +57,10 @@
                 android:label="@string/title_activity_map_and_details_maps"
                 android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
-        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+
+        <uses-library
+                android:name="org.apache.http.legacy"
+                android:required="false"/>
     </application>
 
 </manifest>

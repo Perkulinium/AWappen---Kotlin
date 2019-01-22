@@ -55,8 +55,6 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
 
-
-
        /* // if place not found:
        var latitudeA = awplace.Latitude
        var longitudeB = awplace.Longitude
@@ -69,7 +67,7 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         else {*/
             var showplace = LatLng(awplace.Latitude as Double, awplace.Longitude as Double)
             //var showplace = LatLng(latitudeA!!, longitudeB!!)
-            mMap.addMarker(MarkerOptions().position(showplace).title(awplace.name as String))
+            mMap.addMarker(MarkerOptions().position(showplace).title(awplace.fbKey))
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(showplace, 18f))}
         //}
 }
