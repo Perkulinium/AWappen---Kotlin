@@ -19,7 +19,6 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     var awplace = firebase()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_and_details_maps)
@@ -28,16 +27,12 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
         awplaceName.text = awplace.fbKey
-
-
-
-
-
-
-
         awplaceAdress.text = awplace.Address
         awplaceOpeningHour.text = awplace.Openinghours
         awplaceWebsite.text = awplace.Webbsite
+
+
+
 
      //   Log.i("pi8", "details : " + awplace.fbKey)
 
@@ -59,9 +54,22 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
 
-        // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney, 18f))
-    }
+
+
+
+       /* // if place not found:
+       var latitudeA = awplace.Latitude
+       var longitudeB = awplace.Longitude
+        if (latitudeA == null || longitudeB == null){
+            var showplace = LatLng(55.60587, 13.00073)
+            mMap.addMarker(MarkerOptions().position(showplace).title("Place not found. Marker in Malmö."))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(showplace, 18f))
+
+        }
+        else {*/
+            var showplace = LatLng(awplace.Latitude as Double, awplace.Longitude as Double)
+            //var showplace = LatLng(latitudeA!!, longitudeB!!)
+            mMap.addMarker(MarkerOptions().position(showplace).title(awplace.name as String))
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(showplace, 18f))}
+        //}
 }

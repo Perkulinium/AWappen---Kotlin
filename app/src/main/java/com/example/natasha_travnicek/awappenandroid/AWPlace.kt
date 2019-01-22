@@ -12,8 +12,8 @@ data class AWPlace(
 
     var name : String? = "",
     var webbsite : String? = "",
-    var longitude : String? = "",
-    var latitude : String? = "",
+    var longitude : Double? = null,
+    var latitude : Double? = null,
     var openingHours : String? = "",
     var adress : String? = ""
 
