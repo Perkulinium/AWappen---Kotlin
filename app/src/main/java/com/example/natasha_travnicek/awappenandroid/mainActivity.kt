@@ -35,7 +35,7 @@ class mainActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
         }
         R.id.Favorite_Container -> {
 
-          //  replaceFragmentFavorite(FavoriteFragment())
+           // replaceFragmentFavorite(FavoritesFragment())
 
             return@OnNavigationItemSelectedListener true
         }

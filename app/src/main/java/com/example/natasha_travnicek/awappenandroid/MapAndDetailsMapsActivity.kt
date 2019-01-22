@@ -19,7 +19,6 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     var awplace = firebase()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_map_and_details_maps)
