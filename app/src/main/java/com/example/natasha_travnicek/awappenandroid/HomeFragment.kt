@@ -75,7 +75,7 @@ class HomeFragment : Fragment() {
         listener = null
     }
 
-
+/*
     override fun onStart() {
         super.onStart()
 
@@ -93,7 +93,7 @@ class HomeFragment : Fragment() {
 
         }
 
-/*
+
         // firebase hämta veckans aw place..
 
         val database = FirebaseDatabase.getInstance()
