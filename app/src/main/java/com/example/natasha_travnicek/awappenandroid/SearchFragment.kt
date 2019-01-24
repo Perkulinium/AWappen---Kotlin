@@ -83,7 +83,7 @@ class SearchFragment : Fragment() {
                 for(places in place) {
 
 
-                    if(places.fbKey!!.contains(newText!!, ignoreCase = true)) {
+                    if(places.Name!!.contains(newText!!, ignoreCase = true)) {
                         searchResult.add(places)
                     }
 
@@ -210,13 +210,7 @@ class SearchFragment : Fragment() {
 
 
 
-
-
-
-
-
-
-                 thePlace?.fbKey = currentPlace.key
+                 thePlace?.Name = currentPlace.key
 
 
 
@@ -230,7 +224,7 @@ class SearchFragment : Fragment() {
                   Log.i(TAG, "test person - ${currentPlace!!.value}")
 
 
-                    Log.i(TAG, "Loop person ${thePlace!!.fbKey}")
+                    Log.i(TAG, "Loop person ${thePlace!!.Name}")
                   Log.i(TAG, "Loop person ${thePlace!!.Longitude}")
 
                   //Log.i("pia8", "${thePlace.latitude}")

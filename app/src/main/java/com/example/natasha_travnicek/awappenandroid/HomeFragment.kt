@@ -5,12 +5,15 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.main.activity_map_and_details_maps.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 //import android.widget.Button;
@@ -37,7 +40,9 @@ class HomeFragment : Fragment() {
     private var param2: String? = null
     private var listener: OnFragmentInteractionListener? = null
 
+    //hämta aw ställe från facebook
     var weekly_place : firebase? = null
+    var place = mutableListOf<firebase>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -75,7 +80,59 @@ class HomeFragment : Fragment() {
         listener = null
     }
 
-/*
+
+     //Ladda alla ställen från firebase
+    fun loadPlaces() {
+
+
+        val database = FirebaseDatabase.getInstance()
+        val placeRef = database.reference
+
+        //val test = placeRef.child("")
+        //val placeref2 = placeRef.child("Longitude")
+
+        val getPlaceListener = object : ValueEventListener {
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+
+                for (currentPlace in dataSnapshot.children) {
+                    val thePlace = currentPlace.getValue(firebase::class.java)
+
+                    thePlace?.Name = currentPlace.key
+                    thePlace?.Openinghours = currentPlace.child("Opening hours").value.toString()
+
+                    Log.i("awapplog", "CHECK PLACE "+thePlace!!.Name)
+                    if(thePlace!!.Weekly == true)
+                    {
+                        Log.i("awapplog", "FOUND PLACE "+thePlace!!.Name)
+                        weekly_place = thePlace
+
+                        //home_weekly_button.text = weekly_place!!.fbKey
+                        textView3.text = weekly_place!!.Name
+                    }
+
+
+
+
+                }
+
+            }
+
+
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+
+            }
+
+        }
+
+        // placeRef.addListenerForSingleValueEvent(getPlaceListener)
+        placeRef.addListenerForSingleValueEvent(getPlaceListener)
+    }
+
+
+
     override fun onStart() {
         super.onStart()
 
@@ -84,49 +141,19 @@ class HomeFragment : Fragment() {
             if(weekly_place != null)
             {
                 val intent = Intent(this.context, MapAndDetailsMapsActivity::class.java)
-
-                intent.putExtra("", weekly_place)  //vilket är veckans aw här
-
-
+                intent.putExtra("awplace", weekly_place)  //vilket är veckans aw
                 startActivity(intent)
             }
 
         }
 
+        loadPlaces()
 
-        // firebase hämta veckans aw place..
-
-        val database = FirebaseDatabase.getInstance()
-        val placeRef = database.reference
-
-        val test = placeRef.child("")          //hämta var stället ligger, kolla xcode
-        //val placeref2 = placeRef.child("Longitude")
-
-
-                       /*
-                func addWeeklyAW() {
-
-                    for aw in awPlaceList {
-                        if(aw.weekly == true) {
-                            weekly = aw
-                            weeklyAWName.text = weekly.name
-                            weeklyAWCategories.text = weekly.getCategoriesAsString()
-                        }
-                        */
-
-        val getPlaceListener = object : ValueEventListener {
-
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-
-                for (currentPlace in dataSnapshot.children) {
-                    val thePlace = currentPlace.getValue(firebase::class.java)
-                }
-            }
-        }
-
-        home_weekly_button.text = "abc"                 //vad heter veckans ställe
     }
-*/
+
+      //  home_weekly_button.text = "abc"                 //vad heter veckans ställe
+
+
 
     /**
      * This interface must be implemented by activities that contain this

@@ -38,7 +38,7 @@ class awPlacesAdapter(var place: MutableList<firebase>, val clickplaceListener: 
     override fun onBindViewHolder(holder: awPlacesAdapter.awPlacesViewHolder, rownumber: Int) {
 
 
-        holder.firstname.text = place.get(rownumber).fbKey
+        holder.firstname.text = place.get(rownumber).Name
 
 
     }

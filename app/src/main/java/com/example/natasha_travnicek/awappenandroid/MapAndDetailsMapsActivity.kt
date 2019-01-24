@@ -26,7 +26,7 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         awplace = intent.getSerializableExtra("awplace") as firebase
 
 
-        awplaceName.text = awplace.fbKey
+        awplaceName.text = awplace.Name
         awplaceAdress.text = awplace.Address
         awplaceOpeningHour.text = awplace.Openinghours
         awplaceWebsite.text = awplace.Webbsite
@@ -67,7 +67,7 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         else {*/
             var showplace = LatLng(awplace.Latitude as Double, awplace.Longitude as Double)
             //var showplace = LatLng(latitudeA!!, longitudeB!!)
-            mMap.addMarker(MarkerOptions().position(showplace).title(awplace.fbKey))
+            mMap.addMarker(MarkerOptions().position(showplace).title(awplace.Name))
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(showplace, 18f))}
         //}
 }
