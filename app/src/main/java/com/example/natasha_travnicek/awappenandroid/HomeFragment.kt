@@ -151,7 +151,7 @@ class HomeFragment : Fragment() {
 
     }
 
-      //  home_weekly_button.text = "abc"                 //vad heter veckans ställe
+
 
 
 

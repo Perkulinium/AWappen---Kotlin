@@ -1,10 +1,12 @@
 package com.example.natasha_travnicek.awappenandroid
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.favorites_recview_layout.view.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class favoritesAdapter : RecyclerView.Adapter<favoritesAdapter.favoritesViewHolder>(){
 
@@ -30,4 +32,7 @@ class favoritesAdapter : RecyclerView.Adapter<favoritesAdapter.favoritesViewHold
 
 
     }
+
+
+
 }

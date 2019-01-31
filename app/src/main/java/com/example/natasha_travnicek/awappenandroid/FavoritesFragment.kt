@@ -1,13 +1,16 @@
 package com.example.natasha_travnicek.awappenandroid
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.activity_map_and_details_maps.*
 import kotlinx.android.synthetic.main.fragment_favorites.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -39,6 +42,8 @@ class FavoritesFragment : Fragment() {
         favorites_recview.layoutManager = LinearLayoutManager(this.context)
 
         favorites_recview.adapter = favoritesAdapter()
+
+
 
     }
 

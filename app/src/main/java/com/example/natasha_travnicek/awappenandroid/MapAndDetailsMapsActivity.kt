@@ -70,4 +70,28 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             mMap.addMarker(MarkerOptions().position(showplace).title(awplace.Name))
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(showplace, 18f))}
         //}
+
+
+
+    /*
+
+           favorites_Button.setOnClickListener {
+
+               if(favorites_Button==isPressed)
+               {
+               save place in FavoritesFragment
+
+                   val intent = Intent(this.context, FavoritesFragment::class.java)
+                   intent.putExtra("favorites", weekly_place)
+                   startActivity(intent)
+               }
+
+           }
+
+           loadPlaces()
+
+       }
+       */
+
+
 }
