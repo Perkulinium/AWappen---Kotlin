@@ -14,7 +14,10 @@
             map:layout_constraintEnd_toEndOf="parent">
         <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:scrollbarAlwaysDrawVerticalTrack="false">
+                android:layout_height="wrap_content" android:scrollbarAlwaysDrawVerticalTrack="false"
+                map:layout_constraintTop_toTopOf="parent" map:layout_constraintStart_toStartOf="parent"
+                map:layout_constraintEnd_toEndOf="parent" map:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="49dp">
 
             <ImageView
                     android:layout_width="0dp"
