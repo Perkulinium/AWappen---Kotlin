@@ -2,6 +2,7 @@ package com.example.natasha_travnicek.awappenandroid
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.EventLog
 import android.util.Log
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -32,6 +33,7 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         awplaceWebsite.text = awplace.Webbsite
 
 
+        setCategoryImage()
 
 
      //   Log.i("pi8", "details : " + awplace.fbKey)
@@ -40,6 +42,47 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+    }
+
+
+
+    fun setCategoryImage() {
+
+        var categories = awplace.getCatgories()
+
+        /*
+        ORDER of imagechecks
+        ______________
+        Event
+        Activity
+        Nightclub
+        Bowling
+        Restaurant
+        Bar
+        ______________
+         */
+
+
+        if(categories.contains("Event")) {
+            categoryImage.setImageResource(R.drawable.musicphoto)
+        } else if (categories.contains("Activity")) {
+            categoryImage.setImageResource(R.drawable.pooltable)
+        } else if (categories.contains("Nightclub")) {
+            categoryImage.setImageResource(R.drawable.discoball)
+        } else if (categories.contains("Bowling")) {
+            categoryImage.setImageResource(R.drawable.activityphotobowling)
+        } else if (categories.contains("Restaurant")) {
+            categoryImage.setImageResource(R.drawable.foodphoto)
+        } else if (categories.contains("Bar")) {
+            categoryImage.setImageResource(R.drawable.beer)
+        }
+
+
+        if(awplace.Name == "BrewDog Bar") {
+            categoryImage.setImageResource(R.drawable.beer)
+        }
+
+
     }
 
     /**

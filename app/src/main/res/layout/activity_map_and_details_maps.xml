@@ -11,15 +11,10 @@
             android:layout_width="match_parent"
             android:layout_height="650dp" android:id="@+id/scrollView2" map:layout_constraintTop_toTopOf="parent"
             map:layout_constraintStart_toStartOf="parent" map:layout_constraintBottom_toBottomOf="parent"
-            map:layout_constraintEnd_toEndOf="parent" map:layout_constraintHorizontal_bias="0.0"
-            map:layout_constraintVertical_bias="0.0">
+            map:layout_constraintEnd_toEndOf="parent">
         <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:scrollbarAlwaysDrawVerticalTrack="false"
-                map:layout_constraintTop_toTopOf="parent" map:layout_constraintStart_toStartOf="parent"
-                map:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="49dp"
-                map:layout_constraintEnd_toEndOf="parent" map:layout_constraintHorizontal_bias="0.0"
-                map:layout_constraintVertical_bias="0.0">
+                android:layout_height="wrap_content" android:scrollbarAlwaysDrawVerticalTrack="false">
 
             <ImageView
                     android:layout_width="0dp"
@@ -42,6 +37,7 @@
                     android:id="@+id/awplaceName"
                     map:layout_constraintStart_toStartOf="parent" android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp" map:layout_constraintTop_toTopOf="parent"
+                    map:layout_constraintEnd_toStartOf="@+id/button" android:layout_marginEnd="10dp"
                     android:textSize="24sp"
                     android:textColor="@android:color/white" android:fontFamily="serif"/>
             <TextView
@@ -89,6 +85,14 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp" map:layout_constraintTop_toBottomOf="@+id/imageView"
                     android:textColor="@android:color/white" android:textSize="18sp"/>
+            <Button
+                    android:text="fav"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:id="@+id/button" android:layout_marginTop="10dp"
+                    map:layout_constraintTop_toTopOf="parent" map:layout_constraintStart_toEndOf="@+id/awplaceName"
+                    android:layout_marginStart="10dp" map:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="10dp" android:textSize="10sp"/>
             <fragment
                     android:id="@+id/map"
                     tools:context=".MapAndDetailsMapsActivity"
@@ -101,15 +105,6 @@
                     map:layout_constraintVertical_bias="1.0"
                     map:layout_constraintEnd_toEndOf="parent" map:layout_constraintHorizontal_bias="1.0"
             />
-            <ImageButton
-                    android:layout_width="58dp"
-                    android:layout_height="60dp" map:srcCompat="@drawable/ic_favorite_black_24dp"
-                    android:id="@+id/favorites_Button"
-                    map:layout_constraintStart_toEndOf="@+id/awplaceName"
-                    android:layout_marginStart="8dp" android:layout_marginTop="8dp"
-                    map:layout_constraintTop_toTopOf="parent" map:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginEnd="8dp" android:layout_marginBottom="90dp"
-                    map:layout_constraintBottom_toBottomOf="@+id/imageView"/>
         </android.support.constraint.ConstraintLayout>
     </android.support.constraint.ConstraintLayout>
 
