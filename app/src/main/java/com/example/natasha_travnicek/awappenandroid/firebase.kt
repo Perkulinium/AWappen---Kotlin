@@ -42,13 +42,7 @@ data class firebase (var Name : String? = null,
             categories.add("Nightclub")
         }
 
-
         return categories
 
     }
-
-
-
-
-
 }

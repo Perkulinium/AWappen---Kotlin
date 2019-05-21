@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -51,10 +50,6 @@ class SearchFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-
-
-
-
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
@@ -90,19 +85,12 @@ class SearchFragment : Fragment() {
                     theAdapter.letsUpdateStuff(searchResult)
 
                 }
-
-
                 return false
             }
-
         })
-
-
-
 
         // Inflate the layout for this fragment
         return theLayout
-
 
     }
 
@@ -165,18 +153,6 @@ class SearchFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-
-
-
-
-       // place.add(Place("3_test", "Hej", "aw"))
-
-
-//        place.add(Place("dsda", "Då"))
-
-
-
-
         recView.layoutManager = LinearLayoutManager(context)
         theAdapter = awPlacesAdapter(place) {
             rownumberClicked ->
@@ -185,10 +161,6 @@ class SearchFragment : Fragment() {
         }
         recView.adapter = theAdapter
         loadPlaces()
-
-
-
-
     }
 
 
@@ -199,7 +171,6 @@ class SearchFragment : Fragment() {
         val placeRef = database.reference
 
         val test = placeRef.child("")
-        //val placeref2 = placeRef.child("Longitude")
 
         val getPlaceListener = object : ValueEventListener {
 
@@ -208,27 +179,15 @@ class SearchFragment : Fragment() {
               for (currentPlace in dataSnapshot.children) {
                     val thePlace = currentPlace.getValue(firebase::class.java)
 
-
-
                  thePlace?.Name = currentPlace.key
-
-
 
                 thePlace?.Openinghours = currentPlace.child("Opening hours").value.toString()
 
-
-
-
-
-
                   Log.i(TAG, "test person - ${currentPlace!!.value}")
 
-
-                    Log.i(TAG, "Loop person ${thePlace!!.Name}")
+                  Log.i(TAG, "Loop person ${thePlace!!.Name}")
                   Log.i(TAG, "Loop person ${thePlace!!.Longitude}")
 
-                  //Log.i("pia8", "${thePlace.latitude}")
-                  //Log.i("pia8", "${thePlace.longitude}")
 
                   place.add(thePlace)
 
@@ -237,19 +196,12 @@ class SearchFragment : Fragment() {
 
             }
 
-
-
-
             override fun onCancelled(databaseError: DatabaseError) {
 
                 Log.w(TAG, "Loadpost: onCancelled", databaseError.toException())
-
-
             }
-
         }
 
-       // placeRef.addListenerForSingleValueEvent(getPlaceListener)
           placeRef.addListenerForSingleValueEvent(getPlaceListener)
     }
 
@@ -261,29 +213,10 @@ class SearchFragment : Fragment() {
 
         val placeRef = database.getReference("3_test")
 
-       // val PlaceToSave = firebase()
-
-        //PlaceToSave.name = awplaceTextView.text.toString()
-
-       // placeRef.push().setValue(PlaceToSave)
-       // PlaceToSave.saveMe()
         loadPlaces()
 
 
     }
-/*
-    data class Place(
-        var fbKey : String? = null,
-
-        var name : String? = "",
-        // var age : Int? = null
-
-    var jobb : String? = ""
-
-
-    )
-*/
-
 }
 
 

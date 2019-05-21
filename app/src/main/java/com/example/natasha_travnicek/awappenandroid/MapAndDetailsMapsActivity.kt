@@ -1,10 +1,7 @@
 package com.example.natasha_travnicek.awappenandroid
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.EventLog
-import android.util.Log
-
+import android.support.v7.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -12,7 +9,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import kotlinx.android.synthetic.main.activity_map_and_details_maps.*
-import kotlin.math.log
 
 class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -26,24 +22,18 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         awplace = intent.getSerializableExtra("awplace") as firebase
 
-
         awplaceName.text = awplace.Name
         awplaceAdress.text = awplace.Address
         awplaceOpeningHour.text = awplace.Openinghours
         awplaceWebsite.text = awplace.Webbsite
 
-
         setCategoryImage()
-
-
-     //   Log.i("pi8", "details : " + awplace.fbKey)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
     }
-
 
 
     fun setCategoryImage() {
@@ -98,43 +88,9 @@ class MapAndDetailsMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
 
-       /* // if place not found:
-       var latitudeA = awplace.Latitude
-       var longitudeB = awplace.Longitude
-        if (latitudeA == null || longitudeB == null){
-            var showplace = LatLng(55.60587, 13.00073)
-            mMap.addMarker(MarkerOptions().position(showplace).title("Place not found. Marker in Malmö."))
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(showplace, 18f))
-
-        }
-        else {*/
             var showplace = LatLng(awplace.Latitude as Double, awplace.Longitude as Double)
             //var showplace = LatLng(latitudeA!!, longitudeB!!)
             mMap.addMarker(MarkerOptions().position(showplace).title(awplace.Name))
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(showplace, 18f))}
-        //}
-
-
-
-    /*
-
-           favorites_Button.setOnClickListener {
-
-               if(favorites_Button==isPressed)
-               {
-               save place in FavoritesFragment
-
-                   val intent = Intent(this.context, FavoritesFragment::class.java)
-                   intent.putExtra("favorites", weekly_place)
-                   startActivity(intent)
-               }
-
-           }
-
-           loadPlaces()
-
-       }
-       */
-
 
 }

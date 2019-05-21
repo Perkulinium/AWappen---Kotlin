@@ -13,7 +13,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_map_and_details_maps.*
 import kotlinx.android.synthetic.main.fragment_home.*
 
 //import android.widget.Button;
@@ -25,15 +24,7 @@ import kotlinx.android.synthetic.main.fragment_home.*
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [HomeFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
+
 class HomeFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -43,7 +34,6 @@ class HomeFragment : Fragment() {
     //hämta aw ställe från facebook
     var weekly_place : firebase? = null
     var place = mutableListOf<firebase>()
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,7 +70,6 @@ class HomeFragment : Fragment() {
         listener = null
     }
 
-
      //Ladda alla ställen från firebase
     fun loadPlaces() {
 
@@ -110,28 +99,16 @@ class HomeFragment : Fragment() {
                         //home_weekly_button.text = weekly_place!!.fbKey
                         textView3.text = weekly_place!!.Name
                     }
-
-
-
-
                 }
-
             }
-
-
 
             override fun onCancelled(databaseError: DatabaseError) {
 
-
             }
-
         }
 
-        // placeRef.addListenerForSingleValueEvent(getPlaceListener)
         placeRef.addListenerForSingleValueEvent(getPlaceListener)
     }
-
-
 
     override fun onStart() {
         super.onStart()
@@ -151,21 +128,6 @@ class HomeFragment : Fragment() {
 
     }
 
-
-
-
-
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     *
-     *
-     * See the Android Training lesson [Communicating with Other Fragments]
-     * (http://developer.android.com/training/basics/fragments/communicating.html)
-     * for more information.
-     */
     interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         fun onFragmentInteraction(uri: Uri)

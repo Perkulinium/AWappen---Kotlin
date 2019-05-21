@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 class mainActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionListener, SearchFragment.OnFragmentInteractionListener{
 
 
-
     private val m0nNavigationItemSelectedListener =  BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
 
@@ -20,7 +19,6 @@ class mainActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
 
                replaceFragmentHome(HomeFragment())
 
-
                 return@OnNavigationItemSelectedListener true
             }
 
@@ -28,7 +26,6 @@ class mainActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
             Log.d("TAG", "sök")
 
             replaceFragmentSearch(SearchFragment())
-           // bottom_navigation.selectedItemId = R.id.nav_search
 
               return@OnNavigationItemSelectedListener true
 
@@ -37,7 +34,6 @@ class mainActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
             Log.d("TAG", "sök")
 
             replaceFragmentFavorites(FavoritesFragment())
-          //  replaceFragmentFavorite(FavoriteFragment())
 
             return@OnNavigationItemSelectedListener true
         }
@@ -49,24 +45,9 @@ class mainActivity : AppCompatActivity(), HomeFragment.OnFragmentInteractionList
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-        //recyclerView_Search.layoutManager = LinearLayoutManager(this)
-
-        //recyclerView_Search.adapter = awPlacesAdapter()
-
-
-
 bottom_navigation.setOnNavigationItemSelectedListener(m0nNavigationItemSelectedListener)
 
-
       replaceFragmentHome(HomeFragment())
-
-    //  replaceFragmentHome(HomeFragment())
-    //  bottom_navigation.selectedItemId = R.id.Search_Container
-
-
-
-
 
     }
 
@@ -78,7 +59,6 @@ bottom_navigation.setOnNavigationItemSelectedListener(m0nNavigationItemSelectedL
 
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_Container, HomeFragment())
-      //  transaction.addToBackStack(null)
         transaction.commit()
     }
 
